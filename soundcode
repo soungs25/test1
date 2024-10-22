@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Function to calculate factorial
+factorial() {
+    local num=$1
+    local result=1
+
+    for (( i=1; i<=num; i++ ))
+    do
+        result=$(( result * i ))
+    done
+
+    echo $result
+}
+
+# Read input from user
+read -p "Enter a number: " number
+
+# Validate input
+if ! [[ "$number" =~ ^[0-9]+$ ]]; then
+    echo "Please enter a valid non-negative integer."
+    exit 1
+fi
+
+# Calculate and display factorial
+fact=$(factorial $number)
+echo "Factorial of $number is $fact"
+
